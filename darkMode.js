@@ -1,27 +1,28 @@
 const darkThemeMq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-var isDarkTheme = darkThemeMq.matches;
+var isSystemDark = darkThemeMq.matches;
 
 switchTheme();
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { 
-    isDarkTheme = e.matches;
+    isSystemDark = e.matches;
     switchTheme();
 })
 
+// Switches reddit's theme if it doesn't match the system theme
 function switchTheme() {
-    var dropDownButton = document.getElementById("USER_DROPDOWN_ID");
-    dropDownButton.click();
-    var body = document.body;
-    dropDown = body.lastChild.firstChild;
-    var possibles = dropDown.firstChild.childNodes;
-    
-    for (var possible of Array.from(possibles)) {
-        if (possible.getAttribute("class") == "_3SDj_IT6ZaqCbKfC4eTjb2") {
-            if (possible.firstChild.firstChild.innerText == "Dark Mode") {
-                var isRedditDark = possible.firstChild.lastChild.getAttribute("aria-checked");
+    var userDropDownButton = document.getElementById("USER_DROPDOWN_ID");
+    userDropDownButton.click();
 
-                if (isRedditDark != isDarkTheme.toString()) {
-                    possible.firstChild.click();
+    var userDropDown = document.body.lastChild.firstChild;
+    var userDropDownElements = userDropDown.firstChild.childNodes;
+    
+    for (var element of Array.from(userDropDownElements)) {
+        if (element.getAttribute("class") == "_3SDj_IT6ZaqCbKfC4eTjb2") {
+            if (element.firstChild.firstChild.innerText == "Dark Mode") {
+                var isRedditDark = element.firstChild.lastChild.getAttribute("aria-checked");
+
+                if (isRedditDark != isSystemDark.toString()) {
+                    element.firstChild.click();
                 }
 
                 break;
@@ -29,5 +30,5 @@ function switchTheme() {
         }
     }
 
-    dropDownButton.click();
+    userDropDownButton.click();
 }
