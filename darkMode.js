@@ -1,6 +1,12 @@
-const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+const darkThemeMq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+var isDarkTheme = darkThemeMq.matches;
 
 switchTheme();
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { 
+    isDarkTheme = e.matches;
+    switchTheme();
+})
 
 function switchTheme() {
     var dropDownButton = document.getElementById("USER_DROPDOWN_ID");
@@ -14,7 +20,7 @@ function switchTheme() {
             if (possible.firstChild.firstChild.innerText == "Dark Mode") {
                 var isRedditDark = possible.firstChild.lastChild.getAttribute("aria-checked");
 
-                if (isRedditDark != prefersDark.toString()) {
+                if (isRedditDark != isDarkTheme.toString()) {
                     possible.firstChild.click();
                 }
 
