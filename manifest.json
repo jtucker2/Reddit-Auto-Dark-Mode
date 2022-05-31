@@ -2,5 +2,9 @@
     "name": "Reddit Auto Dark Mode",
     "description": "Make reddit respect system theme",
     "version": "1.0",
-    "manifest_version": 3
+    "manifest_version": 3,
+    "content_scripts": [{
+        "matches": ["https://www.reddit.com/*"],
+        "js": ["darkMode.js"]
+    }]
   }
