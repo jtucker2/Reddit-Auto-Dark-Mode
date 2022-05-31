@@ -1,7 +1,5 @@
 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
-console.log(prefersDark);
-
 switchTheme();
 
 function switchTheme() {
@@ -14,13 +12,16 @@ function switchTheme() {
     for (var possible of Array.from(possibles)) {
         if (possible.getAttribute("class") == "_3SDj_IT6ZaqCbKfC4eTjb2") {
             if (possible.firstChild.firstChild.innerText == "Dark Mode") {
-                if (possible.firstChild.lastChild.getAttribute("aria-checked") != toString(prefersDark)) {
+                var isRedditDark = possible.firstChild.lastChild.getAttribute("aria-checked");
+
+                if (isRedditDark != prefersDark.toString()) {
                     possible.firstChild.click();
                 }
+
                 break;
             }
         }
     }
-    
+
     dropDownButton.click();
 }
