@@ -1,0 +1,6 @@
+{
+    "name": "Reddit Auto Dark Mode",
+    "description": "Make reddit respect system theme",
+    "version": "1.0",
+    "manifest_version": 3
+  }
