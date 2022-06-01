@@ -1,15 +1,7 @@
 const darkThemeMq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 var isSystemDark = darkThemeMq.matches;
 
-
 var userDropDownButton = document.getElementById("USER_DROPDOWN_ID");
-
-function openUserDropDown() {
-    if (userDropDownButton.getAttribute("aria-expanded") == "false") userDropDownButton.click();
-}
-function closeUserDropDown() {
-    if (userDropDownButton.getAttribute("aria-expanded") == "true") userDropDownButton.click();
-}
 
 switchTheme();
 
@@ -32,7 +24,18 @@ function switchTheme() {
 
         if (userDropDown != null) {
         
-            var buttons = document.getElementsByClassName("nBh6t8H3UNZpI1Ce9s6yQ");
+            // If you're not logged in the settings button needs to be expanded in the user drop down
+            if (!isLoggedIn()) {
+                var buttons = document.getElementsByClassName("_3fbofimxVp_hpVM6I1TGMS GCltVwsXPu5lE-gs4Nucu");
+                
+                for (var button of Array.from(buttons)) {
+                    if (button.firstChild.childNodes[1].innerText == "Settings") {
+                        button.click();
+                    }
+                }
+            }
+
+            buttons = document.getElementsByClassName("nBh6t8H3UNZpI1Ce9s6yQ");
 
             for (var button of Array.from(buttons)) {
         
@@ -43,7 +46,6 @@ function switchTheme() {
                     break;
                     
                 }
-    
             }
     
             closeUserDropDown();
@@ -58,4 +60,20 @@ function switchTheme() {
     // Ensures there is a DOM change for the observer in case nothing is happening on the page
     openUserDropDown();
 
+}
+
+function openUserDropDown() {
+    if (userDropDownButton.getAttribute("aria-expanded") == "false") userDropDownButton.click();
+}
+function closeUserDropDown() {
+    if (userDropDownButton.getAttribute("aria-expanded") == "true") userDropDownButton.click();
+}
+
+function isLoggedIn() {
+    var e = document.getElementsByClassName("_3Wg53T10KuuPmyWOMWsY2F _2iuoyPiKHN3kfOoeIQalDT _2tU8R9NTqhvBrhoNAXWWcP HNozj_dKjQZ59ZsfEegz8 _2nelDm85zKKmuD94NequP0");
+    try {
+        return e[0].innerText != "Log In";
+    } catch(e) {
+        return true;
+    }
 }
