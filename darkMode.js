@@ -11,7 +11,6 @@ function closeUserDropDown() {
     if (userDropDownButton.getAttribute("aria-expanded") == "true") userDropDownButton.click();
 }
 
-
 switchTheme();
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { 
@@ -29,21 +28,18 @@ function switchTheme() {
         click event so we try again here in case it hasn't opened */
         openUserDropDown();
 
-        var userDropDown = document.body.lastChild.firstChild;
+        var userDropDown = document.getElementsByClassName("_2uYY-KeuYHKiwl-9aF0UiL _1HSQGYlfPWzs40LP4_oFi5 _2XkHtsPtFuTExJyk9JQUAp")[0];
 
-        // When opened, the user dropdown always seems to be the last element in the document body
-        if (userDropDown != null && userDropDown.getAttribute("class") == "_2uYY-KeuYHKiwl-9aF0UiL _1HSQGYlfPWzs40LP4_oFi5 _2XkHtsPtFuTExJyk9JQUAp") {
-
-            var userDropDownElements = userDropDown.firstChild.childNodes;
+        if (userDropDown != null) {
         
-            for (var element of Array.from(userDropDownElements)) {
+            var buttons = document.getElementsByClassName("nBh6t8H3UNZpI1Ce9s6yQ");
+
+            for (var button of Array.from(buttons)) {
+        
+                if (button.firstChild.innerText == "Dark Mode") {
     
-                var elementButton = element.firstChild;
-    
-                if (elementButton.firstChild.innerText == "Dark Mode") {
-    
-                    var isRedditDark = elementButton.lastChild.getAttribute("aria-checked");
-                    if (isRedditDark != isSystemDark.toString()) elementButton.click();
+                    var isRedditDark = button.lastChild.getAttribute("aria-checked");
+                    if (isRedditDark != isSystemDark.toString()) button.click();
                     break;
                     
                 }
