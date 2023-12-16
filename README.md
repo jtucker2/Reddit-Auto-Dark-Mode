@@ -3,7 +3,7 @@ Chrome extension which makes Reddit respect your system theme automatically.
 
 # Automatic Install
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/reddit-auto-dark-mode/ejbbhcpkjnloojhfihmbfgkcjiaoecdg?utm_source=chrome-ntp-icon)
-- Firefox Add-on under review!
+- [Firefox Add-on](https://addons.mozilla.org/en-GB/firefox/addon/reddit-auto-dark-mode)
 
 # Manual Install
 
