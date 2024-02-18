@@ -5,7 +5,7 @@ var userDropDownButton = document.getElementById("USER_DROPDOWN_ID");
 
 switchTheme();
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { 
+darkThemeMq.addEventListener('change', function(e) { 
     isSystemDark = e.matches;
     switchTheme();
 })
