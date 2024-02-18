@@ -22,36 +22,36 @@ function switchTheme() {
 
         var userDropDown = document.getElementsByClassName("_2uYY-KeuYHKiwl-9aF0UiL _1HSQGYlfPWzs40LP4_oFi5 _2XkHtsPtFuTExJyk9JQUAp")[0];
 
-        if (userDropDown != null) {
-        
-            // If you're not logged in the settings button needs to be expanded in the user drop down
-            if (!isLoggedIn()) {
-                var buttons = document.getElementsByClassName("_3fbofimxVp_hpVM6I1TGMS GCltVwsXPu5lE-gs4Nucu");
-                
-                for (var button of Array.from(buttons)) {
-                    if (button.firstChild.childNodes[1].innerText == "Settings") {
-                        button.click();
-                    }
-                }
-            }
-
-            buttons = document.getElementsByClassName("nBh6t8H3UNZpI1Ce9s6yQ");
-
-            for (var button of Array.from(buttons)) {
-        
-                if (button.firstChild.innerText == "Dark Mode") {
-    
-                    var isRedditDark = button.lastChild.getAttribute("aria-checked");
-                    if (isRedditDark != isSystemDark.toString()) button.click();
-                    break;
-                    
-                }
-            }
-    
-            closeUserDropDown();
-            observer.disconnect();
-
+        if (userDropDown == null) {
+            return;
         }
+        
+        // If you're not logged in the settings button needs to be expanded in the user drop down
+        if (!isLoggedIn()) {
+            var buttons = document.getElementsByClassName("_3fbofimxVp_hpVM6I1TGMS GCltVwsXPu5lE-gs4Nucu");
+            
+            for (var button of Array.from(buttons)) {
+                if (button.firstChild.childNodes[1].innerText == "Settings") {
+                    button.click();
+                }
+            }
+        }
+
+        buttons = document.getElementsByClassName("nBh6t8H3UNZpI1Ce9s6yQ");
+
+        for (var button of Array.from(buttons)) {
+    
+            if (button.firstChild.innerText == "Dark Mode") {
+
+                var isRedditDark = button.lastChild.getAttribute("aria-checked");
+                if (isRedditDark != isSystemDark.toString()) button.click();
+                break;
+                
+            }
+        }
+
+        closeUserDropDown();
+        observer.disconnect();
 
     });
 
