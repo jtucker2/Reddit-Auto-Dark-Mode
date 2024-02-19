@@ -1,7 +1,7 @@
 {
     "name": "Reddit Auto Dark Mode",
     "description": "Make reddit respect system theme",
-    "version": "1.0.1",
+    "version": "2.0",
     "manifest_version": 3,
     "content_scripts": [{
         "matches": ["https://www.reddit.com/*"],
@@ -11,6 +11,7 @@
         "48": "icon48.png",
         "128": "icon128.png"
     },
+    "permissions": ["cookies"],
     "browser_specific_settings": {
         "gecko": {
           "id": "usfrasufgi@avuibaerviub.com"
